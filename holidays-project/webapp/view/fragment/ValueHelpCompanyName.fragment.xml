@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"> 
+    <Dialog>
+        <Table id="companyNameTable" growing="true" growingThreshold="100"  mode="SingleSelectLeft" items="{path: 'companyNameTableModel>/'}">
+            <columns>
+                <Column><Text text="{i18n>columnTextCompanyName}"/></Column>
+            </columns>
+            
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{companyNameTableModel>CompanyName}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <beginButton>
+            <Button text="OK" press="onOKPressed"></Button>
+        </beginButton>
+
+        <endButton>
+            <Button text="{i18n>endButton}" press="onCloseFragment"></Button>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

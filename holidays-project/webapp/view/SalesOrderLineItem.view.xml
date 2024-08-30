@@ -1,0 +1,85 @@
+<mvc:View controllerName="sap.btp.holidaysproject.controller.SalesOrderLineItem"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <f:SimpleForm id="SimpleFormSalesOrderDetails" editable="false" layout="ResponsiveGridLayout" title="{i18n>simpleFormTitleSalesOrder}" singleContainerFullSize="false">
+                    <f:content>
+                        <Label text="{i18n>SimpleFormlabelSalesOrderID}"/>
+                        <Text text="{SalesOrderDetailsModel>/SalesOrderID}"/>
+                        
+                        <Label text="{i18n>SimpleFormlabelCustomerID}"/>
+                        <Text text="{SalesOrderDetailsModel>/CustomerID}"/>
+                        
+                        <Label text="{i18n>SimpleFormlabelCustomerName}"/>
+                        <Text text="{SalesOrderDetailsModel>/CustomerName}"/>
+                        
+                        <Label text="{i18n>SimpleFormlabelCurrencyCode}"/>
+                        <Text text="{SalesOrderDetailsModel>/CurrencyCode}"/>
+                        
+                        <Label text="{i18n>SimpleFormlabelNetAmount}"/>
+                        <Text text="{SalesOrderDetailsModel>/NetAmount}"/>
+                        
+                        <Label text="{i18n>SimpleFormlabelCreatedAt}"/>
+                        <Text text="{SalesOrderDetailsModel>/CreatedAt}"/>
+                        
+                        <Label text="{i18n>SimpleFormlabelChangedAt}"/>
+                        <Text text="{SalesOrderDetailsModel>/ChangedAt}"/>
+                    </f:content>
+                </f:SimpleForm>
+                
+
+                <Table id="SalesOrderLineItemsTable" items="{path: 'SalesOrderLineItemsModel>/'}" growing="true">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="{i18n>tableTitleSalesOrderLineItems}"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    
+                    <columns>
+                        <Column><Text text="{i18n>columnTextItemPositionSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextProductIDSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextNoteSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextNoteLanguageOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextCurrencyCodeSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextGrossAmountSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextNetAmountSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextTaxAmountSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextDeliveryDateSalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextQuantitySalesOrderLineItems}"/></Column>
+                        <Column><Text text="{i18n>columnTextQuantityUnitSalesOrderLineItems}"/></Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{SalesOrderLineItemsModel>ItemPosition}" />
+                                <Text text="{SalesOrderLineItemsModel>ProductID}" />
+                                <Text text="{SalesOrderLineItemsModel>Note}" />
+                                <Text text="{SalesOrderLineItemsModel>NoteLanguage}" />
+                                <Text text="{SalesOrderLineItemsModel>CurrencyCode}" />
+                                <Text text="{SalesOrderLineItemsModel>GrossAmount}" />
+                                <Text text="{SalesOrderLineItemsModel>NetAmount}" />
+                                <Text text="{SalesOrderLineItemsModel>TaxAmount}" />
+                                <Text text="{SalesOrderLineItemsModel>DeliveryDate}" />
+                                <Text text="{SalesOrderLineItemsModel>Quantity}" />
+                                <Text text="{SalesOrderLineItemsModel>QuantityUnit}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer></ToolbarSpacer>
+                <Button text="{i18n>buttonBack}" press="onNavBack" type="Emphasized"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

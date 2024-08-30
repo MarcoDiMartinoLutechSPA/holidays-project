@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"> 
+    <Dialog id="addressDialog" title="{i18n>dialogTitle}">
+        <content>
+            <Table id="addressTable" items="{path: 'AddressTableModel>/'}">
+                <columns>
+                    <Column><Text text="{i18n>columnTextStreet}"/></Column>
+                    <Column><Text text="{i18n>columnTextCity}"/></Column>
+                    <Column><Text text="{i18n>columnTextPostalCode}"/></Column>
+                    <Column><Text text="{i18n>columnTextCountry}"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{AddressTableModel>Street}"/>
+                            <Text text="{AddressTableModel>City}"/>
+                            <Text text="{AddressTableModel>PostalCode}"/>
+                            <Text text="{AddressTableModel>Country}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <buttons>
+            <Button text="Close" press="onCloseAddressDialog" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

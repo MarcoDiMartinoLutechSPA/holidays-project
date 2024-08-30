@@ -1,0 +1,24 @@
+<mvc:View controllerName="sap.btp.holidaysproject.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <GenericTile id="businessPartners" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tileBusinessPartnersHeader}" press="onNavigate">
+                <TileContent>
+                    <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+
+            <GenericTile id="salesOrders" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>tileSalesOrdersHeader}" press="onNavigate">
+                <TileContent>
+                    <ImageContent src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+        </content>
+    </Page>
+</mvc:View>
+
+<!-- 
+    1) Capire perchè la colonne di intestazione del file excel non funzionano con gli i18n
+    2) I filtri sulla tabella devono essere fatti backend e non frontend  
+-->

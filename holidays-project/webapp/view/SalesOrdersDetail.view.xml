@@ -1,0 +1,124 @@
+<mvc:View controllerName="sap.btp.holidaysproject.controller.SalesOrdersDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>dynamicPageTitleSalesOrdersDetail}"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onSearch" filterChange="onFilterChange">
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem name="SalesOrderID" groupName="Group1" label="{i18n>labelFilterGroupItemSalesOrderID}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="inputSalesOrderID" placeholder="{i18n>placeholderInputSalesOrderID}"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="CustomerID" groupName="Group2" label="{i18n>labelFilterGroupItemCustomerID}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="inputCustomerID" placeholder="{i18n>placeholderInputCustomerID}"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                           
+                            <fb:FilterGroupItem name="DeliveryStatusDescription" groupName="Group3" label="{i18n>labelFilterGroupItemDeliveryStatusDescription}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox 
+                                        id="comboBoxDeliveryStatusDescription" 
+                                        items="{
+                                            path: '/items'
+                                        }"
+                                        selectionChange="onSelectionChange"
+                                        placeholder="{i18n>placeholderComboBoxDeliveryStatus}">
+                                        <core:Item key="{key}" text="{text}" />
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="CreatedAtStart" groupName="Group4" label="{i18n>labelFilterGroupItemCreatedAtStart}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker id="datePickerCreatedAtStart" change="onDateChange"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="CreatedAtEnd" groupName="Group5" label="{i18n>labelFilterGroupItemCreatedAtEnd}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker id="datePickerCreatedAtEnd" change="onDateChange"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="ChangedAtStart" groupName="Group6" label="{i18n>labelFilterGroupItemChangedAtStart}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker id="datePickerChangedAtStart" change="onDateChange"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem name="ChangedAtEnd" groupName="Group7" label="{i18n>labelFilterGroupItemChangedAtEnd}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker id="datePickerChangedAtEnd" change="onDateChange"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+
+                    <OverflowToolbar>
+                        <ToolbarSpacer></ToolbarSpacer>
+                        <Button text="{i18n>buttonExportExcel}" press="onExport" type="Emphasized"></Button>
+                    </OverflowToolbar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        
+        <f:content>
+            <Table id="SalesOrdersTable" items="{path: 'SalesOrdersTableModel>/'}" growing="true" itemPress="onNavToSalesOrderLineItem">
+                <columns>
+                    <Column><Text text="{i18n>columnTextSalesOrderID}"/></Column>
+                    <Column><Text text="{i18n>columnTextCustomerID}"/></Column>
+                    <Column><Text text="{i18n>columnTextCustomerName}"/></Column>
+                    <Column><Text text="{i18n>columnTextCurrencyCode}"/></Column>
+                    <Column><Text text="{i18n>columnTextNote}"/></Column>
+                    <Column><Text text="{i18n>columnTextNetAmount}"/></Column>
+                    <Column><Text text="{i18n>columnTextCreatedAt}"/></Column>
+                    <Column><Text text="{i18n>columnTextChangedAt}"/></Column>
+                    <Column><Text text="{i18n>columnTextDeliveryStatusDescription}"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <Text text="{SalesOrdersTableModel>SalesOrderID}"/>
+                            <Text text="{SalesOrdersTableModel>CustomerID}"/>
+                            <Text text="{SalesOrdersTableModel>CustomerName}"/>
+                            <Text text="{SalesOrdersTableModel>CurrencyCode}"/>
+                            <Text text="{SalesOrdersTableModel>Note}"/>
+                            <Text text="{SalesOrdersTableModel>NetAmount}"/>
+                            <Text text="{path: 'SalesOrdersTableModel>CreatedAt', formatter: '.dateFormatter.formatDate'}"/>
+                            <Text text="{path: 'SalesOrdersTableModel>ChangedAt', formatter: '.dateFormatter.formatDate'}"/>
+                            <ObjectStatus text="{SalesOrdersTableModel>DeliveryStatusDescription}" 
+                                state="{
+                                    path: 'SalesOrdersTableModel>DeliveryStatusDescription',
+                                    formatter: '.colorFormatter.statusState'
+                                }"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer></ToolbarSpacer>
+                <Button text="{i18n>buttonBack}" press="onNavBack" type="Emphasized"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

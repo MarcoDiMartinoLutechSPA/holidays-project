@@ -1,0 +1,66 @@
+<mvc:View controllerName="sap.btp.holidaysproject.controller.BusinessPartnersDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar">
+
+    <f:DynamicPage showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>dynamicPageTitleBusinessPartnersDetail}" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <f:content>
+                    <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onSearch" filterChange="onFilterChange">
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem name="CompanyName" groupName="Group1" label="{i18n>labelFilterGroupItemCompanyName}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input valueHelpRequest="onValueHelp" showValueHelp="true" id="valueHelp" placeholder="{i18n>placeholderInputCompanyName}"/>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+
+                    <OverflowToolbar>
+                        <ToolbarSpacer></ToolbarSpacer>
+                        <Button text="{i18n>buttonExportExcel}" press="onExport" type="Emphasized"></Button>
+                    </OverflowToolbar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        
+        <f:content>
+            <Table id="BusinessPartnersTable" items="{path: 'BusinessPartnersTableModel>/'}" growing="true">
+                <columns>
+                    <Column><Text text="{i18n>columnTextBusinessPartnerID}"/></Column>
+                    <Column><Text text="{i18n>columnTextCompanyName}"/></Column>
+                    <Column><Text text="{i18n>columnTextCurrencyCode}"/></Column>
+                    <Column><Text text="{i18n>columnTextBusinessPartnerRole}"/></Column>
+                    <Column><Text text="{i18n>columnTextAddress}"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{BusinessPartnersTableModel>BusinessPartnerID}"/>
+                            <Text text="{BusinessPartnersTableModel>CompanyName}"/>
+                            <Text text="{BusinessPartnersTableModel>CurrencyCode}"/>
+                            <Text text="{BusinessPartnersTableModel>BusinessPartnerRole}"/>
+                            <Button icon="sap-icon://addresses" press="onShowAddress"></Button>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer></ToolbarSpacer>
+                <Button text="{i18n>buttonBack}" press="onNavBack" type="Emphasized"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
